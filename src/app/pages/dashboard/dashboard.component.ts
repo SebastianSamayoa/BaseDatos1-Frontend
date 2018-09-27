@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonaService } from '../../services/persona.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _persona: PersonaService
+  ) { }
 
   ngOnInit() {
+    this.cargarPersona();
+  }
+
+  cargarPersona() {
+    this._persona.getPersona().subscribe(
+      result => {
+        console.log(result);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }
