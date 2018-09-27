@@ -6,41 +6,41 @@
 					<img src="assets/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" [formGroup]="forma" (ngSubmit)="crearPersona(); forma.reset();">
 					<span class="login100-form-title">
 						Base de Datos Registro
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Primer Nombre Requerido">
-						<input class="input100" type="text" name="pnombre" placeholder="Primer Nombre">
+					<div class="wrap-input100 validate-input " data-validate = "Primer Nombre Requerido">
+						<input class="input100" formControlName="pnombre" type="text" name="pnombre" placeholder="Primer Nombre">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							
 						</span>
           </div>
           <div class="wrap-input100 validate-input" data-validate = "Segundo Nombre Requerido">
-						<input class="input100" type="text" name="snombre" placeholder="Segundo Nombre">
+						<input class="input100" formControlName="snombre" type="text" name="snombre" placeholder="Segundo Nombre">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							
 						</span>
           </div>
           <div class="wrap-input100 validate-input" data-validate = "Primer Apellido Requerido">
-						<input class="input100" type="text" name="papellido" placeholder="Primer Apellido">
+						<input class="input100" formControlName="papellido" type="text" name="papellido" placeholder="Primer Apellido">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							
 						</span>
           </div>
           <div class="wrap-input100 validate-input" data-validate = "Segundo Apellido Requerido">
-						<input class="input100" type="text" name="sapellido" placeholder="Segundo Apellido">
+						<input class="input100" formControlName="sapellido" type="text" name="sapellido" placeholder="Segundo Apellido">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							
 						</span>
           </div>
           <div class="wrap-input100 validate-input" data-validate = "Nit Requerido">
-						<input class="input100" type="text" name="nit" placeholder="Nit">
+						<input class="input100" formControlName="nit" type="text" name="nit" placeholder="Nit">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							
@@ -63,7 +63,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button type="submit" class="login100-form-btn">
 							Crear Cuenta
 						</button>
 					</div>

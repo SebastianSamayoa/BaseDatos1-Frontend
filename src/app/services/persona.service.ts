@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import 'rxjs/add/operator/toPromise';
 import { map } from 'rxjs/operators';
+import { Persona } from '../models/persona.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,17 @@ export class PersonaService {
     );
   }
 
-  crearUsuario() {
-
+  crearUsuario(_persona: Persona) {
+    const json = JSON.stringify(_persona);
+    const params = json;
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+    return this._http.post(this.url + '/crear', params, { headers: this.headers}).pipe(
+      map ((data) => {
+        return data;
+      })
+    );
   }
 }
