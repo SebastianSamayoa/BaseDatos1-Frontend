@@ -5,25 +5,24 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisteredComponent } from './registered/registered.component';
 import { APP_ROUTES } from './app.routes';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PagesModule } from './pages/pages.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisteredComponent,
-    DashboardComponent,
-    UsuariosComponent
+    RegisteredComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTES,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
