@@ -5,6 +5,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
+import { VentasComponent } from './ventas/ventas.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { PAGES_ROUTES } from './pages.routes';
     DashboardComponent,
     UsuariosComponent,
     PagesComponent,
+    VentasComponent,
   ],
   exports : [
     DashboardComponent,
