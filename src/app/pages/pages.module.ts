@@ -7,6 +7,12 @@ import { SharedModule } from '../shared/shared.module';
 import { PAGES_ROUTES } from './pages.routes';
 import { VentasComponent } from './ventas/ventas.component';
 import { RouterModule } from '@angular/router';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { DespachoComponent } from './despacho/despacho.component';
+import { ProductoComponent } from './producto/producto.component';
+import { ClientesComponent } from './clientes/clientes.component';
+import { InventarioComponent } from './inventario/inventario.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 @NgModule({
   imports: [
@@ -20,6 +26,12 @@ import { RouterModule } from '@angular/router';
     UsuariosComponent,
     PagesComponent,
     VentasComponent,
+    ProveedoresComponent,
+    DespachoComponent,
+    ProductoComponent,
+    ClientesComponent,
+    InventarioComponent,
+    PerfilComponent,
   ],
   exports : [
     DashboardComponent,
