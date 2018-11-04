@@ -27,14 +27,14 @@ export class DashboardComponent implements OnInit {
   }
 
   cargarPersona() {
-    this._persona.getPersona().subscribe(
-      result => {
-        console.log(result);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+    // this._persona.getPersona().subscribe(
+    //   result => {
+    //     console.log(result);
+    //   },
+    //   error => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   cargandobars() {

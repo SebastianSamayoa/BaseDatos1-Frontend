@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PersonaService } from '../services/persona.service';
 import { Persona } from '../models/persona.model';
 import { FormGroup, FormControl } from '@angular/forms';
+import { UsuarioModel } from '../models/usuario.model';
 
 @Component({
   selector: 'app-registered',
@@ -10,9 +11,9 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class RegisteredComponent implements OnInit {
   forma: FormGroup;
-  constructor( private _persona: PersonaService) {
+  constructor(private _persona: PersonaService) {
 
-   }
+  }
 
   ngOnInit() {
     this.forma = new FormGroup({
@@ -20,7 +21,9 @@ export class RegisteredComponent implements OnInit {
       snombre: new FormControl(),
       papellido: new FormControl(),
       sapellido: new FormControl(),
-      nit: new FormControl()
+      nit: new FormControl(),
+      usuario: new FormControl(),
+      contrasena: new FormControl()
     });
   }
 
@@ -29,14 +32,32 @@ export class RegisteredComponent implements OnInit {
       this.forma.value.pnombre, this.forma.value.snombre,
       this.forma.value.papellido, this.forma.value.snombre,
       this.forma.value.nit);
-    this._persona.crearUsuario(persona).subscribe(
-      res => {
-        console.log('Exitoso', res);
-      },
-      err => {
-        console.log(err);
-      }
-    );
+      const pusuario = this.forma.value.usuario;
+      const pcontrasena = this.forma.value.contrasena;
+      console.log(pusuario, pcontrasena);
+    this._persona.crearPersona(persona)
+      .subscribe(
+        res => {
+          const newpersona: any = res;
+          if (newpersona.id !== 0) {
+            const user = new UsuarioModel(
+              pusuario,
+              pcontrasena,
+              'USER',
+              newpersona.id
+            );
+            console.log(user);
+            this._persona.crearUsuario(user).subscribe(
+              resul => { console.log(resul); },
+              error => { console.log(error); }
+            );
+          }
+          console.log('Exitoso', res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 
 }

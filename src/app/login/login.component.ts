@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SesionService } from '../services/sesion.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { SesionModel } from '../models/sesion.model';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  Formulario: FormGroup;
+  public Formulario: FormGroup;
+  @Output() DatosUsuario: EventEmitter<any> = new EventEmitter;
   constructor(private _sesion: SesionService, private _router: Router) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class LoginComponent implements OnInit {
         const datos: any = res;
         if (datos.Ingresa === true) {
           this._router.navigate(['/dashboard']);
+          this._sesion.GuardandoDatos(res);
           this.Formulario.reset();
         } else {
           this._router.navigate(['/login']);

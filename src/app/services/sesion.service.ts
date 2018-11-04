@@ -7,8 +7,9 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SesionService {
-  public url = 'http://192.168.204.136:8989/usuario';
+  public url = 'http://192.168.204.138:8989/usuario';
   public headres: HttpHeaders;
+  public DatosUsuario: any;
   constructor(private _http: HttpClient) { }
 
   iniciandoSesion(_sesion: SesionModel) {
@@ -21,5 +22,13 @@ export class SesionService {
         return data;
       })
     );
+  }
+
+  GuardandoDatos(data) {
+    localStorage.setItem('datos', JSON.stringify(data));
+  }
+
+  FinalizarSesion() {
+    localStorage.removeItem('datos');
   }
 }
