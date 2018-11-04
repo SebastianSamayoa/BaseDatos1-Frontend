@@ -7,7 +7,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 const appRoutes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'registered', component: RegisteredComponent},
-    {path: 'dashboard', component: DashboardComponent}
+    {path: 'dashboard', component: DashboardComponent},
+    {path: '**', component: LoginComponent}
 ];
 
 // tslint:disable-next-line:eofline

@@ -13,7 +13,7 @@ export class PersonaService {
   public headers;
 
   constructor(private _http: HttpClient) {
-    this.url = 'http://192.168.204.128:8080/persona';
+    this.url = 'http://192.168.204.136:8989/persona';
   }
 
   getPersona(): Observable<any> {

@@ -23,7 +23,7 @@ const pagesRoutes: Routes = [
         {path: 'despacho', component: DespachoComponent},
         {path: 'inventario', component: InventarioComponent},
         {path: 'perfil', component: PerfilComponent},
-        {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
+        {path: '', redirectTo: '/**', pathMatch: 'full'}
     ]
 }
 ];
