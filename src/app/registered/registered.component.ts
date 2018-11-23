@@ -17,11 +17,17 @@ export class RegisteredComponent implements OnInit {
 
   ngOnInit() {
     this.forma = new FormGroup({
+      dpi: new FormControl(),
       pnombre: new FormControl(),
       snombre: new FormControl(),
+      tnombre: new FormControl(),
       papellido: new FormControl(),
       sapellido: new FormControl(),
+      capellido: new FormControl(),
       nit: new FormControl(),
+      nacionalidad: new FormControl(),
+      idtelefono: new FormControl(),
+      iddireccion: new FormControl(),
       usuario: new FormControl(),
       contrasena: new FormControl()
     });
@@ -29,9 +35,11 @@ export class RegisteredComponent implements OnInit {
 
   crearPersona() {
     const persona = new Persona(
-      this.forma.value.pnombre, this.forma.value.snombre,
-      this.forma.value.papellido, this.forma.value.snombre,
-      this.forma.value.nit);
+      this.forma.value.dpi,
+      this.forma.value.pnombre, this.forma.value.snombre, this.forma.value.tnombre,
+      this.forma.value.papellido, this.forma.value.sapellido, this.forma.value.capellido,
+      this.forma.value.nit, this.forma.value.nacionalidad, 
+      this.forma.value.idtelefono, this.forma.value.iddireccion);
       const pusuario = this.forma.value.usuario;
       const pcontrasena = this.forma.value.contrasena;
       console.log(pusuario, pcontrasena);
@@ -43,8 +51,8 @@ export class RegisteredComponent implements OnInit {
             const user = new UsuarioModel(
               pusuario,
               pcontrasena,
-              'USER',
-              newpersona.id
+              newpersona.id,
+              2
             );
             console.log(user);
             this._persona.crearUsuario(user).subscribe(

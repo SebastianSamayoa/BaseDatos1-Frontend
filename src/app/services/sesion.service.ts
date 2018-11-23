@@ -7,18 +7,20 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SesionService {
-  public url = 'http://192.168.204.138:8989/usuario';
+  public url = 'http://192.168.79.128:8989/usuario';
   public headres: HttpHeaders;
   public DatosUsuario: any;
   constructor(private _http: HttpClient) { }
 
   iniciandoSesion(_sesion: SesionModel) {
     this.headres = new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     });
     const json = JSON.stringify(_sesion);
-    return this._http.post(this.url + '/session', json, { headers: this.headres }).pipe(
+    return this._http.post(this.url + '/sesion', json, { headers: this.headres }).pipe(
       map((data) => {
+        console.log(data);
         return data;
       })
     );

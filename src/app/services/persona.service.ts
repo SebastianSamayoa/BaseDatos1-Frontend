@@ -13,7 +13,7 @@ export class PersonaService {
   public url: String;
   public headers;
   constructor(private _http: HttpClient) {
-    this.url = 'http://192.168.204.138:8989/';
+    this.url = 'http://192.168.79.128:8989/';
   }
 
   getPersona(): Observable<any> {
@@ -21,13 +21,13 @@ export class PersonaService {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     });
-    return this._http.get<any>(this.url + '/all').pipe(
+    return this._http.get<any>(this.url + 'usuario/all').pipe(
       map(result => {
         return result;
       })
     );
   }
-
+  // Creacion de Persona
   crearPersona(_persona: Persona) {
     const json = JSON.stringify(_persona);
     const params = json;
@@ -35,13 +35,13 @@ export class PersonaService {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     });
-
     return this._http.post(this.url + 'persona/crear', params, { headers: this.headers}).pipe(
       map ((data) => {
         return data;
       })
     );
   }
+  // Creacion de Usuario
   crearUsuario(_usuario: UsuarioModel) {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json'

@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       (res) => {
         // console.log(res);
         const datos: any = res;
-        if (datos.Ingresa === true) {
+        if (datos.usuario !== '') {
           this._router.navigate(['/dashboard']);
           this._sesion.GuardandoDatos(res);
           this.Formulario.reset();
