@@ -13,13 +13,20 @@ import { ProductoComponent } from './producto/producto.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { InventarioComponent } from './inventario/inventario.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     PAGES_ROUTES,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserModule
   ],
   declarations: [
     DashboardComponent,

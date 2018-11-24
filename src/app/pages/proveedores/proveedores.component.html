@@ -3,14 +3,14 @@
     <h2 align="center">Guatemala</h2>
     <h4 align="center">Universidad Mariano Galvez de Guatemala</h4>
 </div>
-<form>
+<form [formGroup]="FormularioProveedor" (ngSubmit)="crearProveedor(); FormularioProveedor.reset();" autocomplete="off">
     <div class="form-row">
         <div class="col-sm-2"></div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Nombre de Sociedad" focus>
+            <input type="text" class="form-control" formControlName="sociedad" placeholder="Nombre de Sociedad" focus>
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Nombre Comercial">
+            <input type="text" class="form-control" formControlName="comercial" placeholder="Nombre Comercial">
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -18,10 +18,10 @@
     <div class="form-row">
         <div class="col-sm-2"></div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Nit">
+            <input type="text" class="form-control" formControlName="nit" placeholder="Nit">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Telefono">
+            <input type="text" class="form-control" formControlName="idtelefono" placeholder="Telefono">
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -29,9 +29,20 @@
     <div class="form-row">
         <div class="col-sm-2"></div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Direccion">
+            <input type="text" class="form-control" formControlName="iddireccion" placeholder="Direccion">
         </div>
         <div class="col-sm-2"></div>
+    </div>
+<hr>
+    <div class="form-row">
+
+        <div class="col-sm-2"></div>
+        <div class="col-sm-2">
+            <button class="login100-form-btn" type="submit">
+                Crear Proveedor
+            </button>
+        </div>
+
     </div>
     <hr>
 </form>
@@ -42,18 +53,21 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Codigo</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio</th>
+                <th scope="col">Sociedad</th>
+                <th scope="col">Comercial</th>
+                <th scope="col">Nit</th>
+                <th scope="col">Telefono</th>
             </tr>
         </thead>
         <tbody>
-            <th scope="row">1</th>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
+            <tr *ngFor="let Proveedores of ListaProveedores">
+                    <th>{{Proveedores.id}}</th>
+                    <td>{{Proveedores.sociedad}}</td>
+                    <td>{{Proveedores.comercial}}</td>
+                    <td>{{Proveedores.nit}}</td>
+                    <td>{{Proveedores.idtelefono}}</td>
+            </tr>
+            
         </tbody>
     </table>
 </div>
