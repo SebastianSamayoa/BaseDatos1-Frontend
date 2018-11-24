@@ -47,7 +47,7 @@ export class ProveedoresComponent implements OnInit {
     this._proveedor.cargarProveedores().subscribe(
       (res)=>{
         this.ListaProveedores = res;
-        console.log(this.ListaProveedores);
+        // console.log(this.ListaProveedores);
       },
       (error)=>{
         console.log(error);

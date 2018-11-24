@@ -18,16 +18,16 @@ export class ProductoService {
 
   crearProducto(_producto: ProductoModel) {
     const params = JSON.stringify(_producto);
-    return this._http.post(this.url + '/crearproducto',params,{headers:this.headers}).pipe(
-      map ( (data) => {
+    return this._http.post(this.url + '/crearproducto', params, { headers: this.headers }).pipe(
+      map((data) => {
         return data;
       })
     );
   }
 
-  cargarProductos(){
-    return this._http.get(this.url+'/productostodos').pipe(
-      map((data)=>{
+  cargarProductos() {
+    return this._http.get(this.url + '/productostodos').pipe(
+      map((data) => {
         return data;
       })
     );

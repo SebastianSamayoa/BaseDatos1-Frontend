@@ -3,14 +3,15 @@
     <h2 align="center">Guatemala</h2>
     <h4 align="center">Universidad Mariano Galvez de Guatemala</h4>
 </div>
-<form>
+<form [formGroup]="FormularioProducto" (ngSubmit)="crearProductos(); FormularioProducto.reset();">
     <div class="form-row">
         <div class="col-sm-2"></div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Nombre Producto" focus>
+            <input type="text" formControlName="nombreproducto" class="form-control" placeholder="Nombre Producto"
+                focus>
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Cantidad">
+            <input type="text" formControlName="cantidad" class="form-control" placeholder="Cantidad">
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -18,10 +19,10 @@
     <div class="form-row">
         <div class="col-sm-2"></div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Precio">
+            <input type="text" formControlName="precio" class="form-control" placeholder="Precio">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Categoria">
+            <input type="text" formControlName="idcategoria" class="form-control" placeholder="Categoria">
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -29,15 +30,24 @@
     <div class="form-row">
         <div class="col-sm-2"></div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Descripcion">
+            <input type="text" formControlName="descripcion" class="form-control" placeholder="Descripcion">
         </div>
         <div class="col">
-            <div class="col-sm-2">
-                <input type="text" class="form-control" placeholder="Proveedor">
-            </div>
+            <input type="text" formControlName="idproveedor" class="form-control" placeholder="Proveedor">
         </div>
+        <div class="col-sm-2"></div>
     </div>
     <hr>
+    <div>
+        <div class="form-row">
+            <div class="col-sm-2"></div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Crear Producto</button>
+            </div>
+
+        </div>
+        <hr>
+    </div>
 </form>
 <hr>
 <!-- seccion para mostrar los datos de los proveedores -->
@@ -53,11 +63,14 @@
             </tr>
         </thead>
         <tbody>
-            <th scope="row">1</th>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
+            <tr *ngFor="let Producto of ListaProductos">
+                <th scope="row">{{Producto.id}}</th>
+                <td>{{Producto.nombreproducto}}</td>
+                <td>{{Producto.cantidad}}</td>
+                <td>Q {{Producto.precio}}</td>
+                <td>{{Producto.descripcion}}</td>
+            </tr>
+
         </tbody>
     </table>
 </div>
