@@ -20,7 +20,7 @@ export class FacturaService {
 
   crearFactura(_factura: FacturaModel) {
     const params = JSON.stringify(_factura);
-    this._http.post(this.url + '/factura/crearfactura', params, { headers: this.headers }).pipe(
+    return this._http.post(this.url + '/factura/crearfactura', params, { headers: this.headers }).pipe(
       map((data) => {
         return data;
       })
@@ -29,7 +29,7 @@ export class FacturaService {
 
   crearDetalleFactura(_detallefactura: FacturaDetalleModel) {
     const params = JSON.stringify(_detallefactura);
-    this._http.post(this.url + '/factura/creardetalle', params, { headers: this.headers }).pipe(
+    return this._http.post(this.url + '/factura/creardetalle', params, { headers: this.headers }).pipe(
       map((data) => {
         return data;
       })
@@ -38,7 +38,7 @@ export class FacturaService {
 
   crearCliente(_cliente: ClienteModel) {
     const params = JSON.stringify(_cliente);
-    this._http.post(this.url + '/cliente/crearcliente', params, { headers: this.headers }).pipe(
+    return this._http.post(this.url + '/cliente/crearcliente', params, { headers: this.headers }).pipe(
       map((data) => {
         return data;
       })
@@ -46,7 +46,7 @@ export class FacturaService {
   }
 
   obtenerClientes() {
-    this._http.get(this.url + '/cliente/clientetodos', { headers: this.headers }).pipe(
+    return this._http.get(this.url + '/cliente/clientetodos', { headers: this.headers }).pipe(
       map((data) => {
         return data;
       })

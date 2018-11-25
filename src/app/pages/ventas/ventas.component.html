@@ -1,28 +1,28 @@
 <div class="container col-12">
-  <h1 align="center">Fabrica de Hilos</h1>
-  <h2 align="center">Guatemala</h2>
-  <h4 align="center">Universidad Mariano Galvez de Guatemala</h4>
+    <h1 align="center">Fabrica de Hilos</h1>
+    <h2 align="center">Guatemala</h2>
+    <h4 align="center">Universidad Mariano Galvez de Guatemala</h4>
 </div>
 <hr>
-<form>
+<form [formGroup]="FormularioCliente">
     <div class="form-row">
-      <div class="col-sm-2"></div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Primer nombre" focus>
-      </div>
-      <div class="col">
-        <input type="text" class="form-control" placeholder="Segundo nombre">
-      </div>
-      <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col">
+            <input type="text" formControlName="nombres" class="form-control" placeholder="Nombres" focus>
+        </div>
+        <div class="col">
+            <input type="text" formControlName="apellidos" class="form-control" placeholder="Apellidos">
+        </div>
+        <div class="col-sm-2"></div>
     </div>
     <br>
     <div class="form-row">
         <div class="col-sm-2"></div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Nit">
+            <input type="text" formControlName="nit" class="form-control" placeholder="Nit">
         </div>
         <div class="col">
-            <input type="text" class="form-control" placeholder="Telefono">
+            <input type="text" formControlName="iddireccion" class="form-control" placeholder="Telefono">
         </div>
         <div class="col-sm-2"></div>
     </div>
@@ -36,27 +36,37 @@
     </div>
     <hr>
 </form>
-<form >
+<form [formGroup]="FormularioDetalle" (ngSubmit)="agregarProducto();">
     <!-- seccion de Productos -->
     <div class="form-row">
-            <div class="col-sm-2"></div>
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Codigo">
-            </div>
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Cantidad">
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col">
+            <input type="text" formControlName="idproducto" class="form-control" placeholder="Codigo Producto">
+        </div>
+        <div class="col">
+            <input type="text" formControlName="cantidad" class="form-control" placeholder="Cantidad">
+        </div>
+        <div class="col-sm-2"></div>
     </div>
     <br>
     <div class="form-row">
-            <div class="col-sm-2"></div>
-            <div class="col">
-                <input type="text" class="form-control" placeholder="Descripcion">
-            </div>
-            <div class="col-sm-2"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" placeholder="Descripcion">
+        </div>
+        <div class="col-sm-2">
+            <input type="submit" class="form-control btn btn-primary" value="Agregar Producto">
+        </div>
     </div>
 </form>
+<br>
+<div class="form-row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2">
+        <input type="button" class="form-control btn btn-primary" value="Cerrar Factura" (click)="crearFactura();">
+    </div>
+    <div class="col-sm-2"></div>
+</div>
 <hr>
 <!-- seccion para mostrar el detallado de la factura -->
 <div class="container table-responsive-xl">
@@ -71,11 +81,12 @@
             </tr>
         </thead>
         <tbody>
-            <th scope="row">1</th>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
+            <tr *ngFor="let detalle of DetalleFact">
+                <th scope="row">{{detalle.idproducto}}</th>
+                <td>{{detalle.cantidad}}</td>
+                
+            </tr>
+            
         </tbody>
     </table>
 </div>
